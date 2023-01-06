@@ -24,7 +24,7 @@ pipeline {
 					noUploadOnFailure: false,
 					selectedRegion: 'ap-south-1',
 					showDirectlyInBrowser: false,
-					sourceFile: '**/webapp/target/*.war',
+					sourceFile: 'build/static/js/main.9940296e.js',
 					storageClass: 'STANDARD',
 					uploadFromSlave: false,
 					useServerSideEncryption: false

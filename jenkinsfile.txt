@@ -7,6 +7,34 @@ pipeline {
         sh 'npm run build'
       }
     }
+    // To upload artifacts into S3 bucket
+	 stage('S3 Upload') {
+      steps {
+        s3Upload consoleLogLevel: 'INFO',
+	dontSetBuildResultOnFailure: false,
+	dontWaitForConcurrentBuildCompletion: false,
+	entries: [
+				[
+					bucket: 'new.bucket1', 
+					excludedFile: '/webapp/target',
+					flatten: false,
+					gzipFiles: false,
+					keepForever: false,
+					managedArtifacts: false,
+					noUploadOnFailure: false,
+					selectedRegion: 'ap-south-1',
+					showDirectlyInBrowser: false,
+					sourceFile: '**/webapp/target/*.war',
+					storageClass: 'STANDARD',
+					uploadFromSlave: false,
+					useServerSideEncryption: false
+				]
+			], 
+	pluginFailureResultConstraint: 'FAILURE', 
+	profileName: 'new.bucket1',
+	userMetadata: []
+      		}
+    	}  
     stage('Test') {
       steps {
         sh 'npm test'

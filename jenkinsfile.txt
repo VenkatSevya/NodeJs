@@ -12,11 +12,12 @@ pipeline {
    //     sh 'gzip -r artifact.gzip build'
     //  }
     //}
-    stage('Create Artifact') {
-      steps {
-        archiveArtifacts artifacts: 'build/**/*', fingerprint: true
-      }
-    }
+   stage('Build Artifact') {
+            steps {
+                // Create a build artifact
+                sh 'zip -r build.zip .'
+            }
+        }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {

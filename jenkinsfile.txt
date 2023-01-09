@@ -7,11 +7,11 @@ pipeline {
         sh 'npm run build'
       }
     }
-//stage('Create Artifact') {
-      //steps {
-        //sh 'zip -r build.zip'
-      //}
-    //}
+stage('Create Artifact') {
+      steps {
+        sh 'tar czf build.tar.gz node_modules build/'
+      }
+    }
     stage('Package') {
             steps {
                 archiveArtifacts artifacts: 'build/**/*', fingerprint: true

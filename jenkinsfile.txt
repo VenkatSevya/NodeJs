@@ -49,9 +49,9 @@ stage('Create Artifact') {
       steps { 
 	script {
           sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 586583118654.dkr.ecr.ap-south-1.amazonaws.com'
-          sh 'docker build -t docker.repo/node .'
-          sh 'docker tag docker.repo/node:latest 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo/node:latest'
-          sh 'docker push 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo/node:latest' 
+          sh 'docker build -t docker.repo .'
+          sh 'docker tag docker.repo:latest 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest'
+          sh 'docker push 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest' 
 	}
       } 
     }

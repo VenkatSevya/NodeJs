@@ -1,6 +1,9 @@
-FROM node:14
-WORKDIR /usr/src/app
-COPY package*.json app.js ./
+# Maintainer 
+LABEL MAINTAINER "gopiperumalla14@gmail.com"
+WORKDIR /app
+COPY package.json /app
+
 COPY ./build.tar.gz /home/ubuntu
-EXPOSE 3000
-CMD ["npm", "start"]
+
+EXPOSE 8081
+CMD ["npm","start"]

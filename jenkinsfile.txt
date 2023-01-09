@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Create Artifact') {
       steps {
-        sh 'zip -r artifact.zip build'
+        sh 'gzip -r artifact.gzip build'
       }
     }
     // To upload artifacts into S3 bucket

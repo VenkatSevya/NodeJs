@@ -12,11 +12,11 @@ stage('Create Artifact') {
         sh 'tar czf build.tar.gz node_modules build/'
       }
     }
-    stage('Package') {
-            steps {
-                archiveArtifacts artifacts: 'build/**/*', fingerprint: true
-            }
-        }
+   // stage('Package') {
+    //        steps {
+     //           archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+      //      }
+       // }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {
@@ -34,7 +34,7 @@ stage('Create Artifact') {
 					noUploadOnFailure: false,
 					selectedRegion: 'ap-south-1',
 					showDirectlyInBrowser: false,
-					sourceFile: 'build/',
+					sourceFile: 'build.tar.gz',
 					storageClass: 'STANDARD',
 					uploadFromSlave: false,
 					useServerSideEncryption: false

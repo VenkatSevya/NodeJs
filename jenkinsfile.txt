@@ -24,7 +24,7 @@ pipeline {
 					noUploadOnFailure: false,
 					selectedRegion: 'ap-south-1',
 					showDirectlyInBrowser: false,
-					sourceFile: 'build/static/css/main.c17080f1.css',
+					sourceFile: 'build/static/css/package.gzip',
 					storageClass: 'STANDARD',
 					uploadFromSlave: false,
 					useServerSideEncryption: false
@@ -36,8 +36,7 @@ pipeline {
       		}
     	}  
      stage('Publish ECR') {
-      steps {
-        //withEnv(["AWS_ACCESS_KEY_ID=${env.AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${env.AWS_SECRET_ACCESS_KEY}", "AWS_DEFAULT_REGION=${env.AWS_DEFAULT_REGION}"]) 
+      steps { 
 	script {
           sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 586583118654.dkr.ecr.ap-south-1.amazonaws.com'
           sh 'docker build -t docker.repo .'

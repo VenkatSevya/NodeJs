@@ -5,5 +5,6 @@ WORKDIR /app
 COPY package.json /app
 
 COPY ./build.tar.gz /home/ubuntu
-CMD node index.js
+
 EXPOSE 8081
+CMD ["npm" "start"]

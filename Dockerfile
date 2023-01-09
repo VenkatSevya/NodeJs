@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:latest
 # Maintainer 
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
 WORKDIR /app

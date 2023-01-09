@@ -35,10 +35,29 @@ pipeline {
 	userMetadata: []
       		}
     	}  
-    stage('Deploy') {
+     stage('Publish ECR') {
       steps {
-        sh './jenkins/scripts/deliver.sh'
-      }
+        //withEnv(["AWS_ACCESS_KEY_ID=${env.AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${env.AWS_SECRET_ACCESS_KEY}", "AWS_DEFAULT_REGION=${env.AWS_DEFAULT_REGION}"]) 
+	script {
+          sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 586583118654.dkr.ecr.ap-south-1.amazonaws.com'
+          sh 'docker build -t docker.repo .'
+          sh 'docker tag docker.repo:latest 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest'
+          sh 'docker push 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest' 
+	}
+      } 
     }
+	  stage('Running Docker Container') {
+		  steps {
+			  script {
+				sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 586583118654.dkr.ecr.ap-south-1.amazonaws.com'
+				sh "sudo docker rm -f webapp || true"   
+				sh "docker pull 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest "
+				sh "docker tag 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest webapp "
+				sh "docker rmi 586583118654.dkr.ecr.ap-south-1.amazonaws.com/docker.repo:latest "
+				sh "sudo docker run -it -d --name webapp -p 8002:8080 webapp"
+				  
+			  }
+		  }
+	  }
   }
 }

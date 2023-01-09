@@ -12,11 +12,6 @@ stage('Create Artifact') {
         sh 'tar czf build.tar.gz node_modules build/'
       }
     }
-   // stage('Package') {
-    //        steps {
-     //           archiveArtifacts artifacts: 'build/**/*', fingerprint: true
-      //      }
-       // }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {

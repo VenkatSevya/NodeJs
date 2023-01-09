@@ -7,11 +7,11 @@ pipeline {
         sh 'npm run build'
       }
     }
-    stage('Create Artifact') {
-      steps {
-        sh 'gzip -r artifact.gzip build'
-      }
-    }
+ //   stage('Create Artifact') {
+  //    steps {
+   //     sh 'gzip -r artifact.gzip build'
+    //  }
+    //}
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {
@@ -29,7 +29,7 @@ pipeline {
 					noUploadOnFailure: false,
 					selectedRegion: 'ap-south-1',
 					showDirectlyInBrowser: false,
-					sourceFile: 'build/static/css/package.gzip',
+					sourceFile: 'build/',
 					storageClass: 'STANDARD',
 					uploadFromSlave: false,
 					useServerSideEncryption: false

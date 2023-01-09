@@ -1,11 +1,9 @@
 FROM node:latest
 # Maintainer 
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
+WORKDIR /app
+COPY package.json /app
 
 COPY ./build.tar.gz /home/ubuntu
-
-RUN npm install
-
+CMD node index.js
 EXPOSE 8081
-
-CMD ["npm", "start"]

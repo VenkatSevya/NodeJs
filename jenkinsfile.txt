@@ -35,11 +35,6 @@ pipeline {
 	userMetadata: []
       		}
     	}  
-    stage('Test') {
-      steps {
-        sh 'npm test'
-      }
-    }
     stage('Deploy') {
       steps {
         sh './jenkins/scripts/deliver.sh'

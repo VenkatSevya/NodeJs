@@ -3,11 +3,10 @@ FROM node:latest
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
 WORKDIR /app
 
-COPY package.json .
+COPY ./build.tar.gz /home/ubuntu
 RUN npm install
 
-COPY . .
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD ["npm", "start"]

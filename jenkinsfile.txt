@@ -7,6 +7,11 @@ pipeline {
         sh 'npm run build'
       }
     }
+    stage('Create Artifact') {
+      steps {
+        sh 'zip -r artifact.zip build'
+      }
+    }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {

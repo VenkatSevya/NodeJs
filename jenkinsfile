@@ -21,7 +21,7 @@ stage('Create Artifact') {
 	entries: [
 				[
 					bucket: 'new.bucket1', 
-					excludedFile: '/webapp/target',
+					//excludedFile: '/webapp/target',
 					flatten: false,
 					gzipFiles: false,
 					keepForever: false,

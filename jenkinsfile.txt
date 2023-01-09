@@ -12,7 +12,7 @@ pipeline {
    //     sh 'gzip -r artifact.gzip build'
     //  }
     //}
-    stage('Archive') {
+    stage('Create Artifact') {
       steps {
         archiveArtifacts artifacts: 'build/**/*', fingerprint: true
       }

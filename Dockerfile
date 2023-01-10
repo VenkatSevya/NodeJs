@@ -4,7 +4,7 @@ LABEL MAINTAINER "gopiperumalla14@gmail.com"
 WORKDIR /app
 COPY package.json /app
 RUN npm install -g npm
-RUN sudo tar -tzf /home/ubuntu/build.tar.gz
+RUN tar -tzf /home/ubuntu/build.tar.gz
 COPY ./build.tar.gz /home/ubuntu
 
 EXPOSE 8081

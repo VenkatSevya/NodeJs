@@ -1,7 +1,7 @@
 FROM node:latest
 # Maintainer 
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
-WORKDIR /app
+WORKDIR /NodeJs
 COPY package.json /app
 RUN npm install 
 #RUN /home/ubuntu/build

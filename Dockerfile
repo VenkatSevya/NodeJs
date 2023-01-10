@@ -9,4 +9,4 @@ COPY ./build.tar.gz /home/ubuntu
 
 EXPOSE 8081
 #CMD ["npm","start"]
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]

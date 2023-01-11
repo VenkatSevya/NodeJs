@@ -3,12 +3,12 @@ FROM node:latest
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
 # Create app directory
 WORKDIR /app
-# Install app dependencies
+# Copy the package.json and package-lock.json files
 COPY package.json /app
+# Install the application's dependencies
 RUN npm install
-
+# Copy the rest of the application's code
 COPY . ./
-#RUN npm run build
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

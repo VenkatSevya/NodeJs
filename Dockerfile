@@ -5,10 +5,6 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install 
 COPY . ./
-RUN npm run build
-#RUN /home/ubuntu/build
-#COPY ./build.tar.gz /home/ubuntu
-
+RUN npm run buil
 EXPOSE 8081
-#CMD ["npm","start"]
-CMD [ "npm", "start" ]
+CMD [ "npm","start" ]

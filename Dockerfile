@@ -7,4 +7,4 @@ RUN npm install
 COPY . ./
 RUN npm run buil
 EXPOSE 8081
-CMD [ "npm","start" ]
+CMD [ "npm", "start" ]

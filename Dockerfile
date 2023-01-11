@@ -1,7 +1,7 @@
 FROM node:latest
 # Maintainer 
 LABEL MAINTAINER "gopiperumalla14@gmail.com"
-# Create a directory for the application
+# working directory
 WORKDIR /app
 # Copy the package.json and package-lock.json files
 COPY package.json /app

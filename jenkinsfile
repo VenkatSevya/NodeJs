@@ -12,10 +12,10 @@ stage('Create Artifact') {
         sh 'tar czf build.tar.gz build/'
       }
     }
-stage('SonarQube analysis') {
-        steps{
-        withSonarQubeEnv('Sonarqube') {
-        sh "sonar:sonar"
+stage("SonarQube Analysis") {
+            steps {
+                withSonarQubeEnv('SONAR_SERVER') {
+                    sh "./node_modules/.bin/sonar-scanner"
     		}
             }
         }

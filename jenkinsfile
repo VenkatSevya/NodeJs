@@ -15,7 +15,7 @@ stage('Create Artifact') {
 stage('SonarQube analysis') {
         steps{
         withSonarQubeEnv('Sonarqube') {
-        sh "mvn sonar:sonar"
+        sh "sonar:sonar"
     		}
             }
         }

@@ -14,7 +14,7 @@ stage('Create Artifact') {
     }
 stage("SonarQube Analysis") {
             steps {
-                withSonarQubeEnv('SONAR_SERVER') {
+                withSonarQubeEnv('Sonarqube') {
                     sh "./node_modules/.bin/sonar-scanner"
     		}
             }

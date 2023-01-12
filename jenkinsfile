@@ -12,6 +12,13 @@ stage('Create Artifact') {
         sh 'tar czf build.tar.gz build/'
       }
     }
+stage('SonarQube analysis') {
+        steps{
+        withSonarQubeEnv('Sonarqube') {
+        sh "mvn sonar:sonar"
+    		}
+            }
+        }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {

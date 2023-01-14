@@ -15,7 +15,7 @@ stage('Create Artifact') {
 stage('SonarQube Analysis') {
             steps {
                 // Install the SonarQube Scanner
-                sh 'npm install -g sonarqube-scanner'
+                sh 'sudo npm install -g sonarqube-scanner'
                 // Configure the SonarQube Scanner
                 withSonarQubeEnv('Sinarqube') {
                     sh 'sonar-scanner'

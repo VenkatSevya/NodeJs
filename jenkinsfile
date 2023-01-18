@@ -12,16 +12,6 @@ stage('Create Artifact') {
         sh 'tar czf build.tar.gz build/'
       }
     }
-stage('SonarQube Analysis') {
-            steps {
-                // Install the SonarQube Scanner
-                sh 'sudo npm install -g sonarqube-scanner'
-                // Configure the SonarQube Scanner
-                withSonarQubeEnv('Sonarqube') {
-                    sh 'sonar-scanner'
-                }
-            }
-        }
     // To upload artifacts into S3 bucket
 	 stage('S3 Upload') {
       steps {

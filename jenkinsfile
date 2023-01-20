@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+    stage('Clone') {
+      steps {
+        // Get some code from a GitHub repository
+	 git branch: "master", url: "https://github.com/VenkatSevya/NodeJs.git"		
+		}
+	}
     stage('Build') {
       steps {
         sh 'npm install'
